@@ -9,7 +9,7 @@ interface PromoProps {
 }
 const Promo: FC<PromoProps> = ({ image, title, description, buttonText }) => {
   return (
-    <section className="h-[125px]">
+    <section className="h-[20vh]">
       <div className="relative mx-auto -mt-[75px] w-[calc(100%-48px)] rounded-[10px]">
         <NextImage
           className="rounded-[10px] object-cover"
