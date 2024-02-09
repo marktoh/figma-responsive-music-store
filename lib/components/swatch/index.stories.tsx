@@ -57,8 +57,8 @@ export const Primary: Story = {
   render: (args) => (
     <List {...args}>
       <div className="flex gap-2">
-        {data?.map((e) => (
-          <div className="flex flex-col items-center gap-2">
+        {data?.map((e, idx) => (
+          <div key={idx} className="flex flex-col items-center gap-2">
             <Swatch background={e.color} />
             <div className="text-[8px] text-slate-400">{e.label}</div>
           </div>

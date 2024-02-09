@@ -85,8 +85,8 @@ export const Primary: Story = {
   render: (args) => (
     <List {...args}>
       <div className="flex flex-col gap-8">
-        {data?.map((e) => (
-          <GridItem label={e.label}>
+        {data?.map((e, idx) => (
+          <GridItem key={idx} label={e.label}>
             <e.component>{text}</e.component>
           </GridItem>
         ))}
