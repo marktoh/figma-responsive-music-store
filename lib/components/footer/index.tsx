@@ -1,24 +1,34 @@
 import { FC } from "react";
+import NextImage from "next/image";
 import { SectionPin } from "../section-pin";
 import { H5, CaptionText } from "../typography";
+import Brand from "../../../public/assets/hero/brand.png";
 
-const FooterSection = () => {
+type FooterSection = {
+  title: string;
+  links: string[];
+  mode?: "mobile" | "desktop";
+};
+interface FooterSectionProps extends FooterSection {}
+const FooterSection: FC<FooterSectionProps> = ({
+  title,
+  links,
+  mode = "desktop",
+}) => {
   return (
-    <div className="flex flex-col items-center gap-[9px] pt-[46px]">
+    <div className="flex flex-col items-center gap-[9px] pt-[46px] md:items-start">
       <div className="relative text-center text-white">
-        <H5>My Account</H5>
+        <H5>{title}</H5>
         <SectionPin
+          left={mode === "mobile" ? "left-[25%]" : "left-[0%"}
           offsetTop="-top-3"
           pinWidth="w-[58px]"
           borderColor="border-white"
         />
       </div>
       <div>
-        <ul className="flex flex-col items-center gap-[9px] font-worksans text-[14px] leading-[1.3] text-white">
-          <li>Overview</li>
-          <li>Order History</li>
-          <li>Wishlist</li>
-          <li>Account Information</li>
+        <ul className="flex flex-col items-center gap-[9px] font-worksans text-[14px] leading-[1.3] text-white md:items-start">
+          {links?.map((link, idx) => <li key={idx}>{link}</li>)}
         </ul>
       </div>
     </div>
@@ -34,17 +44,56 @@ const SocialMedia = () => {
     </div>
   );
 };
-const Footer: FC = () => {
+
+const MobileView: FC<FooterProps> = ({ sections }) => {
   return (
-    <footer className="flex flex-col items-center justify-between gap-8 bg-darkgrey">
-      <div>
-        <FooterSection />
+    <footer className="md:hidden">
+      <div className="flex flex-col items-center justify-between gap-8 bg-darkgrey">
+        <div className="flex flex-row">
+          <section>
+            <FooterSection {...sections?.[0]} mode="mobile" />
+          </section>
+        </div>
+        <SocialMedia />
+        <div className="flex w-screen flex-col items-center bg-black py-2 text-white">
+          <CaptionText>©2021 Music Store</CaptionText>
+        </div>
       </div>
-      <SocialMedia />
-      <div className="flex w-screen flex-col items-center bg-black py-2 text-white">
+    </footer>
+  );
+};
+
+const DesktopView: FC<FooterProps> = ({ sections }) => {
+  return (
+    <footer className="hidden bg-darkgrey md:block">
+      <div className="flex flex-row justify-between pb-[52px] pt-[81px] md:px-16 lg:px-[100px]">
+        <div className="flex flex-row gap-12">
+          {sections?.map((section, idx) => (
+            <section key={idx}>
+              <FooterSection {...section} />
+            </section>
+          ))}
+        </div>
+        <div className="flex flex-col gap-[27px] self-end">
+          <NextImage src={Brand} alt="Brand" width={255} height={40} />
+          <SocialMedia />
+        </div>
+      </div>
+      <div className="flex w-screen flex-col items-center bg-black py-2 text-white md:items-start md:px-16 lg:px-[100px]">
         <CaptionText>©2021 Music Store</CaptionText>
       </div>
     </footer>
+  );
+};
+interface FooterProps {
+  sections: FooterSection[];
+}
+const Footer: FC<FooterProps> = ({ sections }) => {
+  return (
+    <>
+      <MobileView sections={sections} />
+      <DesktopView sections={sections} />
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import NextImage, { StaticImageData } from "next/image";
+import NextImage from "next/image";
 import Brand from "../../../public/assets/hero/brand.png";
 import Menu from "../../../public/assets/hero/menu.png";
 

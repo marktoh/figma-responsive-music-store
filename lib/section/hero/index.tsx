@@ -17,7 +17,7 @@ const Hero: FC<HeroProps> = ({ image, title }) => {
         fill
       />
       <div className="absolute left-[50%] top-[30%] -translate-x-1/2 -translate-y-1/2 transform">
-        <p className="z-10 text-balance p-[12%] text-center font-worksans text-[32px] font-bold leading-[1.2] text-white">
+        <p className="z-10 text-balance p-[12%] text-center font-worksans text-[32px] font-bold leading-[1.2] text-white lg:text-[56px]">
           {title}
         </p>
       </div>

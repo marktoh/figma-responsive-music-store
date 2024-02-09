@@ -13,7 +13,9 @@ const BaseSection: FC<BaseSectionProps> = ({ title, children }) => {
         <H4>{title}</H4>
         <SectionPin pinWidth="w-[80px]" borderColor="border-red" />
       </div>
-      <div className="flex flex-col items-center gap-4">{children}</div>
+      <div className="flex flex-col items-center gap-4 md:grid md:grid-cols-2 md:gap-8 xl:flex xl:flex-row">
+        {children}
+      </div>
     </section>
   );
 };
