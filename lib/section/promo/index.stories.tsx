@@ -19,7 +19,7 @@ export const Primary: Story = {
   },
   decorators: (Story) => {
     return (
-      <div className="h-screen w-[375px] bg-gray-900">
+      <div className="h-screen w-full bg-gray-900">
         <div className="h-[200px]" />
         <Story />
       </div>
