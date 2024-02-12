@@ -28,7 +28,11 @@ const FooterSection: FC<FooterSectionProps> = ({
       </div>
       <div>
         <ul className="flex flex-col items-center gap-[9px] font-worksans text-[14px] leading-[1.3] text-white md:items-start">
-          {links?.map((link, idx) => <li key={idx}>{link}</li>)}
+          {links?.map((link, idx) => (
+            <li key={idx} className="cursor-pointer hover:underline">
+              {link}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
@@ -37,10 +41,22 @@ const FooterSection: FC<FooterSectionProps> = ({
 const SocialMedia = () => {
   return (
     <div className="flex gap-5">
-      <img className="h-5 w-5" src="assets/social-media/youtube.svg" />
-      <img className="h-5 w-5" src="assets/social-media/twitter.svg" />
-      <img className="h-5 w-5" src="assets/social-media/instagram.svg" />
-      <img className="h-5 w-5" src="assets/social-media/facebook.svg" />
+      <img
+        className="h-5 w-5 cursor-pointer hover:opacity-75"
+        src="assets/social-media/youtube.svg"
+      />
+      <img
+        className="h-5 w-5 cursor-pointer hover:opacity-75"
+        src="assets/social-media/twitter.svg"
+      />
+      <img
+        className="h-5 w-5 cursor-pointer hover:opacity-75"
+        src="assets/social-media/instagram.svg"
+      />
+      <img
+        className="h-5 w-5 cursor-pointer hover:opacity-75"
+        src="assets/social-media/facebook.svg"
+      />
     </div>
   );
 };
@@ -75,7 +91,13 @@ const DesktopView: FC<FooterProps> = ({ sections }) => {
           ))}
         </div>
         <div className="flex flex-col gap-[27px] self-end">
-          <NextImage src={Brand} alt="Brand" width={255} height={40} />
+          <NextImage
+            className="cursor-pointer hover:opacity-75"
+            src={Brand}
+            alt="Brand"
+            width={255}
+            height={40}
+          />
           <SocialMedia />
         </div>
       </div>

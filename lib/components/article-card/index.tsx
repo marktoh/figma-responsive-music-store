@@ -20,7 +20,7 @@ const ArticleCard: FC<ArticleCardProps> = ({
   const bgClassName = style === "one" ? "bg-lightgrey" : "bg-black";
   const className = [infoClassName, bgClassName].join(" ");
   return (
-    <div className="flex w-fit flex-col">
+    <div className="flex w-fit animate-fadein cursor-pointer flex-col transition hover:opacity-75">
       <div className="relative h-[300px] w-[300px] rounded-t-[10px] bg-silver">
         {image && (
           <NextImage

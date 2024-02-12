@@ -11,7 +11,7 @@ const Hero: FC<HeroProps> = ({ image, title }) => {
     <div className="relative h-screen w-screen">
       <Header />
       <NextImage
-        className="object-cover object-[70%]"
+        className="animate-fadein object-cover object-[70%]"
         src={image}
         alt=""
         fill

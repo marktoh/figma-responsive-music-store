@@ -26,7 +26,7 @@ type ProductType = {
 interface CardProps extends ProductType {}
 const Card: FC<CardProps> = ({ image, title, description, price, chips }) => {
   return (
-    <div className="flex w-fit flex-col rounded-[10px] shadow-lg">
+    <div className="flex w-fit animate-fadein cursor-pointer flex-col rounded-[10px] shadow-lg duration-200 hover:-translate-y-2 hover:rounded-[15px] hover:border-4 hover:border-gray-200">
       <div className="relative h-[300px] w-[300px] rounded-t-[10px] bg-silver">
         {image && (
           <NextImage className="object-cover" src={image} alt="title" fill />

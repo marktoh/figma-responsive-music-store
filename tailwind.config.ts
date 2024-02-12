@@ -17,6 +17,15 @@ const config: Config = {
         worksans: ["var(--font-worksans)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        fadein: "fadeIn 0.6s",
+      },
     },
   },
   plugins: [],
