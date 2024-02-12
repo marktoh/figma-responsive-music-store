@@ -1,5 +1,7 @@
-import { FC } from "react";
+"use client";
+import { FC, useRef } from "react";
 import NextImage, { StaticImageData } from "next/image";
+import { useInView } from "framer-motion";
 
 interface PromoProps {
   image: StaticImageData;
@@ -8,8 +10,18 @@ interface PromoProps {
   buttonText: string;
 }
 const Promo: FC<PromoProps> = ({ image, title, description, buttonText }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <section className="h-[20vh]">
+    <section
+      className="h-[20vh]"
+      ref={ref}
+      style={{
+        transform: isInView ? "none" : "translateX(200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 1.2s",
+      }}
+    >
       <div className="relative mx-auto -mt-[75px] w-[calc(100%-48px)] animate-fadein rounded-[10px] lg:-mt-[100px]">
         <NextImage
           className="rounded-[10px] object-cover"
